@@ -4,7 +4,6 @@ import {User} from "../models/user.model.js"
 import {uploadOnCloudinary} from "../utils/cloudinary.js"
 import {ApiResponse} from "../utils/ApiResponse.js"
 import jwt from "jsonwebtoken"
-import { response } from "express"
 
 const generateAccessAndRefreshTokens = async(userId) =>{
    try {
@@ -211,7 +210,7 @@ const refreshAccessToken = asyncHandler(async (req, res ) => {
    
       return res.
       status(200).
-      cookie("accessToken",accessToken,options)
+      cookie("accessToken",accessToken,options).
       cookie("refreshToken",newRefreshToken,options).
       json(
          new ApiResponse(
